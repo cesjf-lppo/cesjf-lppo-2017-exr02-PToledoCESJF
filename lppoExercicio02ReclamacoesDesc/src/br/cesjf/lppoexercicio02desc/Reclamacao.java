@@ -5,13 +5,9 @@
  */
 package br.cesjf.lppoexercicio02desc;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,6 +34,7 @@ public class Reclamacao extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        rbgStatus = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -48,14 +45,15 @@ public class Reclamacao extends javax.swing.JDialog {
         tfEmail = new javax.swing.JTextField();
         tfDescricao = new javax.swing.JTextField();
         tfStatus = new javax.swing.JTextField();
-        btPrimeiro = new javax.swing.JButton();
-        btAnterior = new javax.swing.JButton();
-        btProximo = new javax.swing.JButton();
-        btUltimo = new javax.swing.JButton();
         btNovo = new javax.swing.JButton();
         btSalvar = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
         btPesquisar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -80,14 +78,6 @@ public class Reclamacao extends javax.swing.JDialog {
                 tfStatusActionPerformed(evt);
             }
         });
-
-        btPrimeiro.setText("<<");
-
-        btAnterior.setText("<");
-
-        btProximo.setText(">");
-
-        btUltimo.setText(">>");
 
         btNovo.setText("Novo");
         btNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -117,64 +107,78 @@ public class Reclamacao extends javax.swing.JDialog {
             }
         });
 
+        jLabel6.setText("0 - Aberto");
+
+        jLabel7.setText("1 - Confirmado");
+
+        jLabel8.setText("2 - Recusado");
+
+        jLabel9.setText("3 - Em execução");
+
+        jLabel10.setText("4 - Resolvido");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btNovo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btExcluir))
+                        .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btPrimeiro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btAnterior)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btProximo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btUltimo))
-                    .addComponent(tfEmail)
-                    .addComponent(tfDescricao)
-                    .addComponent(tfStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btPesquisar))
-                        .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(tfEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfDescricao, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(tfStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel9)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jLabel10))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel6)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jLabel7)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jLabel8))))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(btNovo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btPesquisar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btSalvar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btExcluir)))
+                            .addComponent(tfNome, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(0, 28, Short.MAX_VALUE))))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {tfDescricao, tfEmail, tfNome});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btExcluir, btNovo, btPesquisar, btSalvar});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btPesquisar, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -182,23 +186,27 @@ public class Reclamacao extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addComponent(tfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(tfStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btPrimeiro)
-                    .addComponent(btAnterior)
-                    .addComponent(btProximo)
-                    .addComponent(btUltimo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btNovo)
+                    .addComponent(btPesquisar)
                     .addComponent(btSalvar)
                     .addComponent(btExcluir))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btExcluir, btNovo, btPesquisar, btSalvar});
 
         pack();
         setLocationRelativeTo(null);
@@ -215,7 +223,7 @@ public class Reclamacao extends javax.swing.JDialog {
         tfDescricao.setText("");
         tfStatus.setText("");
         tfId.requestFocus();
-        
+
     }//GEN-LAST:event_btNovoActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
@@ -225,17 +233,37 @@ public class Reclamacao extends javax.swing.JDialog {
         String email = tfEmail.getText();
         String descricao = tfDescricao.getText();
         String status = tfStatus.getText();
-        
         try {
-            operacao.executeUpdate("INSERT INTO reclamacao VALUES("+id+", '"+nome+"', '"+email+"','"+descricao+"', "+status+")");
+            operacao.executeUpdate("INSERT INTO reclamacao VALUES(" + id + ", '" + nome + "', '" + email + "','" + descricao + "', " + status + ")");
             JOptionPane.showMessageDialog(this, "Reclamação cadastrada com sucesso");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Erro:"+ e.getMessage());
+
+            try {
+                operacao.executeUpdate("UPDATE reclamacao SET nome= '" + nome + "', email= '" + email + "', descricao= '" + descricao + "', status= " + status + " WHERE id=" +id);  
+                JOptionPane.showMessageDialog(this, "Atualização realizada com sucesso");
+            } catch (SQLException e1) {
+                JOptionPane.showMessageDialog(this, "Não foi possível atualizar os dados" + e1.getMessage());
+            }
         }
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed
-        // TODO add your handling code here:
+        String cod = JOptionPane.showInputDialog(this, "Digite o código a pesquisar");
+
+        try {
+            ResultSet resultado = operacao.executeQuery("SELECT * FROM reclamacao WHERE id=" + cod);
+            if(resultado.next()){
+                tfId.setText(resultado.getString("id"));
+                tfNome.setText(resultado.getString("nome"));
+                tfEmail.setText(resultado.getString("email"));
+                tfDescricao.setText(resultado.getString("descricao"));
+                tfStatus.setText(resultado.getString("status"));
+            } else{
+                JOptionPane.showMessageDialog(this, "Registro Não encontrado");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Não foi possível localizar o registro" + e.getMessage());
+        }
     }//GEN-LAST:event_btPesquisarActionPerformed
 
     private void tfStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfStatusActionPerformed
@@ -244,12 +272,12 @@ public class Reclamacao extends javax.swing.JDialog {
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         String id = tfId.getText();
-        
+
         try {
-            operacao.executeUpdate("DELETE FROM reclamacao WHER id =" +id);
+            operacao.executeUpdate("DELETE FROM reclamacao WHERE id =" + id);
             JOptionPane.showMessageDialog(this, "Reclamação Excluida com sucesso");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Erro:"+ e.getMessage());
+            JOptionPane.showMessageDialog(this, "Erro:" + e.getMessage());
         }
     }//GEN-LAST:event_btExcluirActionPerformed
 
@@ -296,19 +324,21 @@ public class Reclamacao extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAnterior;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btPesquisar;
-    private javax.swing.JButton btPrimeiro;
-    private javax.swing.JButton btProximo;
     private javax.swing.JButton btSalvar;
-    private javax.swing.JButton btUltimo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.ButtonGroup rbgStatus;
     private javax.swing.JTextField tfDescricao;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfId;
@@ -317,7 +347,7 @@ public class Reclamacao extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     private java.sql.Connection conexao;
     private java.sql.Statement operacao;
-    
+
     private void iniciarBD() {
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -326,9 +356,9 @@ public class Reclamacao extends javax.swing.JDialog {
             operacao = conexao.createStatement();
             //ResultSet resultado = operacao.executeQuery("SELECT * FROM contato");
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(this, "Erro ao carregar Driver"+ e.getMessage());
+            JOptionPane.showMessageDialog(this, "Erro ao carregar Driver" + e.getMessage());
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Erro na conexão"+ e.getMessage());
+            JOptionPane.showMessageDialog(this, "Erro na conexão" + e.getMessage());
         }
     }
 }
