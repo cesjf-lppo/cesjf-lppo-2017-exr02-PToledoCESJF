@@ -29,43 +29,41 @@ public class ListaReclamacoesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        List<Reclamante> lstReclamantes = new ArrayList<>();
+        Connection conexao = null;
+        Statement operacao = null;
+        ResultSet resultado = null;
+        String url = "jdbc:derby://localhost:1527/lppoEx02Reclamacoes";
 
+        // Pegar os dados no banco
+        try {
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            conexao = DriverManager.getConnection(url, "usuario", "senha");
+            operacao = conexao.createStatement();
+            resultado = operacao.executeQuery("SELECT * FROM reclamacao");
+
+            while (resultado.next()) {
+                Reclamante reclamanteAtual = new Reclamante();
+                reclamanteAtual.setId(resultado.getLong("id"));
+                reclamanteAtual.setNome(resultado.getString("nome"));
+                reclamanteAtual.setEmail(resultado.getString("email"));
+                reclamanteAtual.setDescricao(resultado.getString("descricao"));
+                reclamanteAtual.setStatus(resultado.getInt("status"));
+                lstReclamantes.add(reclamanteAtual);
+
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ConexaoBD.class.getName()).log(Level.SEVERE, "Erro ao conectar o banco de dados", ex);
+        }
+
+        request.setAttribute("reclamantes", lstReclamantes);
+        request.getRequestDispatcher("WEB-INF/listaReclamacoes.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Reclamante> lstReclamantes = new ArrayList<>();
-        Connection conexao = null;
-        Statement operacao = null;
-        ResultSet resultado = null;
-        String url = "jdbc:derby://localhost:1527/lppoEx02Reclamacoes";        
-        
-        // Pegar os dados no banco
-        
-        try {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            conexao = DriverManager.getConnection(url, "usuario", "senha"); 
-            operacao = conexao.createStatement();
-            resultado = operacao.executeQuery("SELECT * FROM reclamacao");
-            
-            while(resultado.next()){
-            Reclamante reclamanteAtual = new Reclamante();
-            reclamanteAtual.setId(resultado.getLong("id"));
-            reclamanteAtual.setNome(resultado.getString("nome"));
-            reclamanteAtual.setEmail(resultado.getString("email"));
-            reclamanteAtual.setDescricao(resultado.getString("descricao"));
-            reclamanteAtual.setStatus(resultado.getInt("status"));
-            lstReclamantes.add(reclamanteAtual);
-        
-    }
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ConexaoBD.class.getName()).log(Level.SEVERE, "Erro ao conectar o banco de dados", ex);
-        }
-        
-        request.setAttribute("reclamantes", lstReclamantes);
-        request.getRequestDispatcher("WEB-INF/listaReclamacoes.jsp").forward(request, response);
-    }
 
+    }
 
 }
