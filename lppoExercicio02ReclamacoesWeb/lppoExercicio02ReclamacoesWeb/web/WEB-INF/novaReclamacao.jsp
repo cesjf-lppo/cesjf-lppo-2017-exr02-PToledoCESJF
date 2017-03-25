@@ -6,19 +6,17 @@
         <title>Nova Reclamação</title>
     </head>
     <body>
-        <form action="NovaReclamacaoServlet" method="POST">
+        <form action="nova.html" method="POST">
             <center>
                 <h1>Nova Reclamação!</h1>
                 <table>
                     <tr>
                         <td>
-                            <p>Id<br>
                             <p>Nome<br>
                             <p>Email</p>
                             <p>Descrição</p>
                         </td>
                         <td>
-                            <p><input type="text" name="txtId"  size="40"/></p>
                             <p><input type="text" name="txtNome"  size="40"/></p>
                             <p><input type="text" name="txtEmail"  size="40"/></p>
                             <p><input type="text" name="txtDescricao"  size="40"/></p>

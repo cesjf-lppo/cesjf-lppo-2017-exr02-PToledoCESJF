@@ -58,11 +58,4 @@ public class ListaReclamacoesServlet extends HttpServlet {
         request.setAttribute("reclamantes", lstReclamantes);
         request.getRequestDispatcher("WEB-INF/listaReclamacoes.jsp").forward(request, response);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-    }
-
 }

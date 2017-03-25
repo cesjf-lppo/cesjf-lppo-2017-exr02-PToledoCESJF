@@ -19,14 +19,14 @@
             </tr>
             <c:forEach var="reclamacao" items="${reclamantes}">
                 <tr>
-                    <td>${reclamacao.id}</td>
+                    <td><a href="edita.html?id=${reclamacao.id}">${reclamacao.id}</a></td>
                     <td>${reclamacao.nome}</td>
                     <td>${reclamacao.email}</td>
                     <td>${reclamacao.descricao}</td>
                     <td>${reclamacao.status}</td>
+                    <td><a href="exclui.html?id=${reclamacao.id}">X</a></td>
                 </tr>
             </c:forEach>
-        </table>
-        
+        </table>        
     </body>
 </html>
