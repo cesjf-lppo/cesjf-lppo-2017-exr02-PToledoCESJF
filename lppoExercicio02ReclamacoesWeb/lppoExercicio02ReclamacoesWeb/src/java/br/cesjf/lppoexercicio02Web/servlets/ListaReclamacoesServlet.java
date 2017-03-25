@@ -3,7 +3,6 @@ package br.cesjf.lppoexercicio02Web.servlets;
 import br.cesjf.lppoexercicio02Web.bDados.ConexaoBD;
 import br.cesjf.lppoexercicio02Web.bDados.Reclamante;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

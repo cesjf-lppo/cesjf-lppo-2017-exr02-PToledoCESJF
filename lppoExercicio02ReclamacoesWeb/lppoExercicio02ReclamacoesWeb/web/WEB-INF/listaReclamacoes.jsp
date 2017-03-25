@@ -8,6 +8,7 @@
     </head>
     <body>
         <h1>Listagem de Reclamações!</h1>
+        <a href="nova.html">Nova Reclamação...</a>
         <table>
             <tr>
                 <th>ID</th>

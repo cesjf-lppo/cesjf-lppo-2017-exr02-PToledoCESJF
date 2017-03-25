@@ -1,28 +1,24 @@
-<%-- 
-    Document   : CadReclamacoes
-    Created on : 20/03/2017, 21:14:09
-    Author     : aluno
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro de Reclamações</title>
+        <title>Nova Reclamação</title>
     </head>
     <body>
-        <form action="cadReclamacoesServlet" method="POST">
+        <form action="NovaReclamacaoServlet" method="POST">
             <center>
-                <h1>Cadastro de Reclamações!</h1>
+                <h1>Nova Reclamação!</h1>
                 <table>
                     <tr>
                         <td>
+                            <p>Id<br>
                             <p>Nome<br>
                             <p>Email</p>
                             <p>Descrição</p>
                         </td>
                         <td>
+                            <p><input type="text" name="txtId"  size="40"/></p>
                             <p><input type="text" name="txtNome"  size="40"/></p>
                             <p><input type="text" name="txtEmail"  size="40"/></p>
                             <p><input type="text" name="txtDescricao"  size="40"/></p>
